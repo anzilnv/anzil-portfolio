@@ -1,108 +1,89 @@
-
-const projects = [
-  {
-    number: '01',
-    title: 'Expense Tracker',
-    category: 'Python Development',
-    description:
-      'A personal expense management application to add, track, delete and summarize expenses with data export functionality.',
-    technologies: ['Python', 'CLI', 'CSV'],
-    github: 'https://github.com/yourusername/expense-tracker',
-  },
-  {
-    number: '02',
-    title: 'Roster Planner',
-    category: 'Full Stack Development',
-    description:
-      'An employee scheduling application to manage shifts, employee assignments and roster information.',
-    technologies: ['React', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/yourusername/roster-planner',
-  },
-  {
-    number: '03',
-    title: 'Leave Management',
-    category: 'Web Application',
-    description:
-      'A leave management system for submitting leave requests, tracking applications and managing approvals.',
-    technologies: ['React', 'Express', 'MongoDB'],
-    github: 'https://github.com/yourusername/leave-management',
-  },
-];
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import Reveal from '../components/Reveal';
+import SectionHeading from '../components/SectionHeading';
+import { projects } from '../data/portfolio';
 
 function Projects() {
   return (
-    <section id="projects" className="bg-gray-50 px-6 py-24">
-      <div className="mx-auto max-w-7xl">
+    <section id="projects" className="bg-gray-50 px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow="My work"
+          title="Selected projects I've worked on."
+          description="A collection of projects showcasing my development skills and problem-solving abilities."
+        />
 
-        <p className="mb-4 font-semibold text-blue-600">
-          MY WORK
-        </p>
-
-        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <h2 className="max-w-xl text-4xl font-bold text-gray-900 md:text-5xl">
-            Selected projects I've worked on.
-          </h2>
-
-          <p className="max-w-sm text-gray-500">
-            A collection of projects showcasing my development
-            skills and problem-solving abilities.
-          </p>
-        </div>
-
-        <div className="mt-14 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <article
-              key={project.number}
-              className="group rounded-2xl border border-gray-200 bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"            >
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold text-blue-600">
-                  PROJECT {project.number}
-                </span>
-
-                <span className="text-2xl text-gray-400 transition group-hover:text-blue-600">
-                  ↗
-                </span>
-              </div>
-
-              <p className="mt-10 text-sm font-medium text-gray-400">
-                {project.category}
-              </p>
-
-              <h3 className="mt-2 text-2xl font-bold text-gray-900">
-                {project.title}
-              </h3>
-
-              <p className="mt-4 min-h-24 leading-7 text-gray-500">
-                {project.description}
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600"
-                  >
-                    {tech}
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <Reveal key={project.number} delay={index * 0.08} className="h-full">
+              <article className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold tracking-wider text-blue-600">
+                    PROJECT {project.number}
                   </span>
-                ))}
-              </div>
 
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-flex items-center gap-2 font-semibold text-gray-900 transition hover:text-blue-600"
-              >
-                View GitHub <span>↗</span>
-              </a>
-            </article>
+                  <ArrowUpRight
+                    size={22}
+                    aria-hidden="true"
+                    className="text-gray-300 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-600"
+                  />
+                </div>
+
+                <p className="mt-10 text-sm font-medium text-gray-400">
+                  {project.category}
+                </p>
+
+                <h3 className="mt-2 text-2xl font-bold tracking-tight text-gray-900">
+                  {project.title}
+                </h3>
+
+                <p className="mt-4 flex-1 leading-7 text-gray-500">
+                  {project.description}
+                </p>
+
+                <ul className="mt-6 flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} on GitHub`}
+                    className="inline-flex items-center gap-1.5 font-semibold text-gray-900 transition hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                  >
+                    View GitHub
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${project.title} live demo`}
+                      className="inline-flex items-center gap-1.5 font-semibold text-gray-500 transition hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                    >
+                      Live demo
+                      <ExternalLink size={15} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
 
 export default Projects;
-

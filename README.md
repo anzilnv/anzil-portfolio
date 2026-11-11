@@ -1,12 +1,26 @@
-# React + Vite
+# Anzil Muhammed — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite + Tailwind CSS v4 + Framer Motion + Lucide React.
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev      # start the dev server
+npm run build    # production build
+```
 
-## Expanding the ESLint configuration
+## Editing your content
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+All text, links and project data live in **`src/data/portfolio.js`**.
+Search for `TODO` there to find the placeholders to fill in
+(email, GitHub, LinkedIn, company, dates, education, project links).
+
+## Structure
+
+```
+src/
+  data/portfolio.js      all content
+  components/            Navbar, SocialLinks, SectionHeading, Reveal, Timeline, icons
+  sections/              Hero, About, Skills, Project, Experience, Education, Contact, Footer
+```
